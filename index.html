@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+<body>
+    <h1>Doceria Gourmet</h1>
+    Quantos doces foram vendidos?<br>
+    Macarons <input id="inputQuantidadeMacarons" type="Number"><br>
+    Brigadeiros Gourmets <input id="inputQuantidadeBrigadeiros"  type="Number"><br>
+    Cupcakes <input id="inputQuantidadeCupcakes"  type="Number"><br>
+    Cheesecakes <input id="inputQuantidadeCheesecakes"  type="Number"><br><br>
+    Qual o preço da unidade?<br>
+    Macarons <input id="inputPrecoMacarons" type="Number"><br>
+    Brigadeiros Gourmets <input id="inputPrecoBrigadeiros" type="Number"><br>
+    Cupcakes <input id="inputPrecoCupcakes" type="Number"><br>
+    Cheesecakes <input id="inputPrecoCheesecakes" type="Number"><br>
+    <button onclick="verificar()">Verificar vendas</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+
+<script>
+    
+    function verificar(){
+        var quantMacarons = inputQuantidadeMacarons.value
+        var quantBrigadeiros = inputQuantidadeBrigadeiros.value
+        var quantCupcakes = inputQuantidadeCupcakes.value
+        var quantCheesecakes = inputQuantidadeCheesecakes.value
+        
+        var precoMacarons = inputPrecoMacarons.value
+        var precoBrigadeiros = inputPrecoBrigadeiros.value
+        var precoCupcakes = inputPrecoCupcakes.value
+        var precoCheesecakes = inputPrecoCheesecakes.value
+
+        var valorTotal = (precoMacarons * quantMacarons) + (precoBrigadeiros * quantBrigadeiros) + (precoCupcakes * quantCupcakes) + (precoCheesecakes * quantChessprecoCheesecakes)
+
+        if(quantMacarons && quantBrigadeiros && quantCupcakes &&quantCheesecakes && precoMacarons && precoBrigadeiros && precoCupcakes && precoCheesecakes >=0){
+            divResposta.innerHTML = 'Chegou aqui'
+        } 
+
+
+    }
+
+</script>
