@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doceria Gourmet</title>
+
+    <style>
+        img{
+            width: 80px;
+            height: auto;
+        }
+
+        .caixinha{
+            background-color: #ffd8fa;
+            padding: 10px; 
+            margin-bottom: 10px;
+            text-align: center; 
+            display: inline-block;
+        }
+    </style>
+    
 </head>
 <body>
     <h1>Doceria Gourmet</h1>
@@ -18,30 +34,89 @@
     Cupcakes <input id="inputPrecoCupcakes" type="Number"><br>
     Cheesecakes <input id="inputPrecoCheesecakes" type="Number"><br>
     <button onclick="verificar()">Verificar vendas</button>
+    <br><br>
     <div id="divResposta"></div>
+
 </body>
 </html>
 
 <script>
     
     function verificar(){
-        var quantMacarons = inputQuantidadeMacarons.value
-        var quantBrigadeiros = inputQuantidadeBrigadeiros.value
-        var quantCupcakes = inputQuantidadeCupcakes.value
-        var quantCheesecakes = inputQuantidadeCheesecakes.value
+        var quantMacarons = Number(inputQuantidadeMacarons.value)
+        var quantBrigadeiros = Number(inputQuantidadeBrigadeiros.value)
+        var quantCupcakes = Number(inputQuantidadeCupcakes.value)
+        var quantCheesecakes = Number(inputQuantidadeCheesecakes.value)
         
-        var precoMacarons = inputPrecoMacarons.value
-        var precoBrigadeiros = inputPrecoBrigadeiros.value
-        var precoCupcakes = inputPrecoCupcakes.value
-        var precoCheesecakes = inputPrecoCheesecakes.value
+        var precoMacarons = Number(inputPrecoMacarons.value)
+        var precoBrigadeiros = Number(inputPrecoBrigadeiros.value)
+        var precoCupcakes = Number(inputPrecoCupcakes.value)
+        var precoCheesecakes = Number(inputPrecoCheesecakes.value)
 
-        var valorTotal = (precoMacarons * quantMacarons) + (precoBrigadeiros * quantBrigadeiros) + (precoCupcakes * quantCupcakes) + (precoCheesecakes * quantChessprecoCheesecakes)
+        var imgMacaron = '<img src="https://static.vecteezy.com/system/resources/previews/035/498/123/non_2x/macarons-cartoon-watercolor-png.png" alt="">'
 
-        if(quantMacarons && quantBrigadeiros && quantCupcakes &&quantCheesecakes && precoMacarons && precoBrigadeiros && precoCupcakes && precoCheesecakes >=0){
-            divResposta.innerHTML = 'Chegou aqui'
-        } 
+        var imgBrigadeiro = '<img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/brigadeiro-6391814-5341944.png?f=webp" alt="">'
 
+         var imgCupcake = '<img src="https://images.vexels.com/media/users/3/143819/isolated/lists/de895247bb3bcb14fd5941257fe04e44-desenho-de-cupcake-deliciosamente-decorado.png" alt="">'
 
-    }
+        var imgCheesecake = '<img src="https://cdn.iconscout.com/icon/free/png-256/free-cheesecake-icon-download-in-svg-png-gif-file-formats--cake-sweet-dessert-bakery-pack-food-drink-icons-7575032.png?f=webp&w=256" alt="">'
+
+        var i
+
+        var venda = 0
+
+        var valorTotal = (precoMacarons * quantMacarons) + (precoBrigadeiros * quantBrigadeiros) + (precoCupcakes * quantCupcakes) + (precoCheesecakes * quantCheesecakes)
+
+        if(quantMacarons < 0 || quantBrigadeiros < 0 || quantCupcakes < 0 || quantCheesecakes < 0 || precoMacarons < 0 || precoBrigadeiros < 0 || precoCupcakes < 0 || precoCheesecakes < 0) {
+            divResposta.innerHTML = 'Sistema não aceita valores negativos'
+        }
+
+        else {
+             divResposta.innerHTML = ''
+
+            if(quantMacarons > 0){
+                i = 0
+                while(i < quantMacarons){
+                    venda += 1
+                    divResposta.innerHTML += ` <div class="caixinha"> Venda ${venda} <br> ${imgMacaron} <br> R$${precoMacarons} <br><br>`
+                    i++
+                }
+                divResposta.innerHTML += '<br>'; 
+            }
+
+            if(quantBrigadeiros > 0){
+                i = 0
+                while(i < quantBrigadeiros){
+                    venda += 1
+                    divResposta.innerHTML += ` <div class="caixinha"> Venda ${venda} <br> ${imgBrigadeiro} <br> R$${precoBrigadeiros} <br><br>`
+                    i++
+                }
+                divResposta.innerHTML += '<br>'; 
+            }  
+
+            if(quantCupcakes > 0){
+                i = 0
+                while(i < quantCupcakes){
+                    venda += 1
+                    divResposta.innerHTML += ` <div class="caixinha"> Venda ${venda} <br> ${imgCupcake} <br> R$${precoCupcakes} <br><br>`
+                    i++
+                }
+                divResposta.innerHTML += '<br>'; 
+            }      
+
+            if(quantCheesecakes > 0){
+                i = 0
+                while(i < quantCheesecakes){
+                    venda += 1
+                    divResposta.innerHTML += ` <div class="caixinha"> Venda ${venda} <br> ${imgCheesecake} <br> R$${precoCheesecakes} <br><br>`
+                    i++
+                }
+                divResposta.innerHTML += '<br>'; 
+            }
+
+            divResposta.innerHTML += `<br> Com a quantidade de ${quantMacarons} Macarons, ${quantBrigadeiros} Brigadeiros, ${quantCupcakes} Cupcakes e ${quantCheesecakes} Cheesecakes, a venda totalizará R$${valorTotal.toFixed(2)}`
+        }
+
+        }
 
 </script>
